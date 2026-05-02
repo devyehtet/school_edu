@@ -1,75 +1,89 @@
-const learningPaths = [
+const modules = [
   {
-    title: 'Foundation Path',
-    duration: '4 weeks',
-    level: 'Beginner',
-    topics: ['Marketing Basics', 'Customer Persona', 'Content Planning'],
+    week: 'Week 1-2',
+    title: 'Digital Marketing Fundamentals',
+    lessons: ['Marketing funnel', 'Audience persona', 'Brand positioning'],
   },
   {
-    title: 'Growth Path',
-    duration: '6 weeks',
-    level: 'Intermediate',
-    topics: ['SEO + Blog Strategy', 'Social Media Systems', 'Email Funnels'],
+    week: 'Week 3-4',
+    title: 'Content + SEO',
+    lessons: ['Keyword research', 'On-page SEO', 'Content calendar planning'],
   },
   {
-    title: 'Performance Path',
-    duration: '8 weeks',
-    level: 'Advanced',
-    topics: ['Google Ads', 'Meta Ads', 'Analytics & Optimization'],
+    week: 'Week 5-6',
+    title: 'Social Media Growth',
+    lessons: ['Reels/TikTok strategy', 'Community building', 'Performance metrics'],
+  },
+  {
+    week: 'Week 7-8',
+    title: 'Paid Ads + Analytics',
+    lessons: ['Meta Ads basics', 'Google Ads setup', 'KPI dashboard & reporting'],
   },
 ];
 
-const features = [
-  'Practical lessons with real campaign examples',
-  'Weekly assignments to build a marketing portfolio',
-  'Templates for content calendar and KPI dashboard',
-  'Progress tracking for each learning path',
+const tools = ['Google Analytics', 'Google Ads', 'Meta Ads Manager', 'Canva', 'Mailchimp'];
+
+const testimonials = [
+  {
+    name: 'Aung Ko',
+    role: 'Small Business Owner',
+    text: 'ဒီ course နဲ့ content plan + ads setup ကို ကိုယ်တိုင်လုပ်နိုင်သွားတယ်။',
+  },
+  {
+    name: 'May Thu',
+    role: 'Marketing Intern',
+    text: 'Portfolio project တွေကြောင့် internship interview မှာ confidence တက်လာတယ်။',
+  },
 ];
 
 export default function HomePage() {
   return (
     <main>
-      <section className="hero-section">
+      <header className="topbar container">
+        <strong>DM Learn Hub</strong>
+        <nav>
+          <a href="#modules">Modules</a>
+          <a href="#tools">Tools</a>
+          <a href="#reviews">Reviews</a>
+        </nav>
+      </header>
+
+      <section className="hero">
         <div className="container hero-grid">
           <div>
-            <p className="pill">Digital Marketing Academy</p>
-            <h1>Learn Digital Marketing and Build Real-World Skills</h1>
-            <p className="subtitle">
-              A modern education website built with Next.js + React to help learners master SEO,
-              content, social media, and paid ads step by step.
+            <p className="tag">Next.js + React Education Website</p>
+            <h1>Digital Marketing ကို အစအဆုံး လေ့လာနိုင်မယ့် Website</h1>
+            <p>
+              Beginner ကစပြီး Campaign launch, Tracking, Optimization အထိ step-by-step
+              သင်ခန်းစာတွေပါဝင်တဲ့ learning platform.
             </p>
-            <div className="hero-actions">
-              <a href="#paths" className="btn btn-primary">Explore Paths</a>
-              <a href="#features" className="btn btn-secondary">Why This Course?</a>
+            <div className="hero-buttons">
+              <a className="btn primary" href="#modules">Course ကိုစမယ်</a>
+              <a className="btn ghost" href="#reviews">Student Reviews</a>
             </div>
           </div>
-          <div className="hero-card">
-            <h3>What You&apos;ll Achieve</h3>
+          <aside className="hero-panel">
+            <h3>Included</h3>
             <ul>
-              <li>Create end-to-end digital strategy</li>
-              <li>Run ad campaigns with budget control</li>
-              <li>Measure KPIs and improve conversions</li>
+              <li>8 Weeks structured roadmap</li>
+              <li>Hands-on mini projects</li>
+              <li>Templates + KPI sheet</li>
+              <li>Beginner-friendly Myanmar/English mix</li>
             </ul>
-          </div>
+          </aside>
         </div>
       </section>
 
-      <section id="paths" className="container section">
-        <div className="section-head">
-          <p>Learning Paths</p>
-          <h2>Choose Your Track</h2>
-        </div>
-        <div className="path-grid">
-          {learningPaths.map((path) => (
-            <article key={path.title} className="path-card">
-              <div className="path-meta">
-                <span>{path.level}</span>
-                <strong>{path.duration}</strong>
-              </div>
-              <h3>{path.title}</h3>
+      <section id="modules" className="container section">
+        <h2>Course Modules</h2>
+        <div className="cards">
+          {modules.map((module) => (
+            <article className="card" key={module.title}>
+              <span>{module.week}</span>
+              <h3>{module.title}</h3>
               <ul>
-                {path.topics.map((topic) => (
-                  <li key={topic}>{topic}</li>
+                {module.lessons.map((lesson) => (
+                  <li key={lesson}>{lesson}</li>
                 ))}
               </ul>
             </article>
@@ -77,19 +91,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="features" className="container section">
-        <div className="feature-box">
-          <div className="section-head">
-            <p>Platform Features</p>
-            <h2>Designed for Practical Learning</h2>
-          </div>
-          <div className="feature-grid">
-            {features.map((feature) => (
-              <div key={feature} className="feature-item">{feature}</div>
-            ))}
-          </div>
+      <section id="tools" className="container section tools">
+        <h2>Tools You Will Use</h2>
+        <div className="chips">
+          {tools.map((tool) => (
+            <div className="chip" key={tool}>{tool}</div>
+          ))}
         </div>
       </section>
+
+      <section id="reviews" className="container section">
+        <h2>Student Reviews</h2>
+        <div className="reviews">
+          {testimonials.map((item) => (
+            <blockquote key={item.name}>
+              <p>“{item.text}”</p>
+              <footer>{item.name} — {item.role}</footer>
+            </blockquote>
+          ))}
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container">
+          <p>© {new Date().getFullYear()} DM Learn Hub. Built with Next.js + React.</p>
+        </div>
+      </footer>
     </main>
   );
 }
